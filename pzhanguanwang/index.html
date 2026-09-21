@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片社区-高清摄影作品浏览与分享平台</title>
+    <meta name="description" content="图片社区提供海量高清摄影作品浏览，涵盖自然风光、人像摄影、艺术创作等多种分类。支持用户上传分享，发现视觉灵感，探索视觉艺术之美。">
+    <meta name="keywords" content="图片社区,高清摄影,摄影作品,视觉艺术,摄影分享">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --accent-color: #2c3e50;
+            --accent-hover: #1a252f;
+            --border-color: #e0e0e0;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .header-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: #e74c3c;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--accent-color);
+            background-color: var(--card-bg);
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-size: 15px;
+        }
+
+        .nav-links a {
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: rgba(255,255,255,0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Main Layout */
+        .main-container {
+            max-width: var(--container-width);
+            margin: 30px auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: 240px 1fr 280px;
+            gap: 30px;
+            flex: 1;
+        }
+
+        /* Sidebar Left */
+        .sidebar-left {
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+        }
+
+        .category-menu h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            padding-left: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .category-menu ul li {
+            margin-bottom: 4px;
+        }
+
+        .category-menu a {
+            display: block;
+            padding: 8px 12px;
+            color: var(--text-sub);
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .category-menu a:hover, .category-menu a.active {
+            background-color: #e8e8e8;
+            color: var(--accent-color);
+        }
+
+        /* Content Area */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            bottom: 4px;
+            width: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .view-all {
+            font-size: 13px;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 160px;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-info {
+            padding: 12px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .card-user {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .avatar {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+
+        /* Sidebar Right */
+        .sidebar-right {
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+        }
+
+        .widget {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .widget h4 {
+            font-size: 15px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .ranking-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .ranking-num {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ddd;
+            min-width: 20px;
+            line-height: 1;
+        }
+
+        .ranking-list li:nth-child(1) .ranking-num { color: #ff4757; }
+        .ranking-list li:nth-child(2) .ranking-num { color: #ff7f50; }
+        .ranking-list li:nth-child(3) .ranking-num { color: #ffa502; }
+
+        .ranking-info h5 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .ranking-info span {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            font-size: 14px;
+            color: var(--text-sub);
+            padding-left: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            padding: 40px 20px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 200px 1fr;
+            }
+            .sidebar-right {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .search-bar {
+                display: none;
+            }
+            .header-container {
+                justify-content: center;
+            }
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-left {
+                display: none;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="#" class="logo">
+            <span>◆</span> 视觉社区
+        </a>
+        <div class="search-bar">
+            <input type="text" placeholder="搜索摄影师、作品标签或主题...">
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="active">首页</a>
+            <a href="#">发现</a>
+            <a href="#">专题</a>
+            <a href="#">图库</a>
+        </nav>
+        <div class="user-actions">
+            <button class="btn btn-outline">登录</button>
+            <button class="btn btn-primary">上传作品</button>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>探索无限视觉创意</h1>
+        <p>加入全球数百万创作者的行列，分享您的摄影作品，发现灵感，连接志同道合的视觉爱好者。</p>
+        <div class="hero-tags">
+            <span class="tag">#街头摄影</span>
+            <span class="tag">#自然风光</span>
+            <span class="tag">#人像艺术</span>
+            <span class="tag">#赛博朋克</span>
+            <span class="tag">#静物微距</span>
+        </div>
+    </div>
+</section>
+
+<main class="main-container">
+    <!-- 左侧导航 -->
+    <aside class="sidebar-left">
+        <div class="category-menu">
+            <h3>热门分类</h3>
+            <ul>
+                <li><a href="#" class="active">推荐</a></li>
+                <li><a href="#">最新上传</a></li>
+                <li><a href="#">最热收藏</a></li>
+                <li><a href="#">精选专题</a></li>
+                <li><a href="#">摄影器材</a></li>
+                <li><a href="#">后期教程</a></li>
+                <li><a href="#">视频动态</a></li>
+            </ul>
+        </div>
+        <div class="category-menu" style="margin-top: 24px;">
+            <h3>地区精选</h3>
+            <ul>
+                <li><a href="#">亚洲摄影</a></li>
+                <li><a href="#">欧洲风光</a></li>
+                <li><a href="#">美洲纪实</a></li>
+                <li><a href="#">大洋洲探秘</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- 中间内容 -->
+    <section class="content-area">
+        <!-- 焦点图区域 -->
+        <div class="gallery-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div class="card" style="grid-column: span 1;">
+                <div class="card-image">
+                    <img src="https://picsum.photos/seed/view1/400/300" alt="风景摄影">
+                </div>
+                <div class="card-info">
+                    <div class="card-title">晨曦中的阿尔卑斯山脉</div>
+                    <div class="card-meta">
+                        <span>摄影师: Alex</span>
+                        <span>1.2k 收藏</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="grid-column: span 2;">
+                <div class="card-image">
+                    <img src="https://picsum.photos/seed/view2/800/300" alt="城市建筑">
+                </div>
+                <div class="card-info">
+                    <div class="card-title">未来都市：霓虹灯下的赛博空间</div>
+                    <div class="card-meta">
+                        <span>摄影师: CyberArt</span>
+                        <span>3.5k 收藏</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 热门推荐 -->
+        <div>
+            <div class="section-header">
+                <h2 class="section-title">本周热门作品</h2>
+                <a href="#" class="view-all">查看全部 &rarr;</a>
+            </div>
+            <div class="gallery-grid">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/art1/300/200" alt="艺术摄影">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">光影的交错：黑白人像系列</div>
+                        <div class="card-meta">
+                            <div class="card-user">
+                                <img src="https://picsum.photos/seed/u1/20/20" class="avatar" alt="">
+                                <span>PhotoMaster</span>
+                            </div>
+                            <span>2.1w</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/art2/300/200" alt="微距摄影">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">微观世界：露珠中的彩虹</div>
+                        <div class="card-meta">
+                            <div class="card-user">
+                                <img src="https://picsum.photos/seed/u2/20/20" class="avatar" alt="">
+                                <span>NatureLover</span>
+                            </div>
+                            <span>8.5k</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/art3/300/200" alt="街头摄影">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">雨夜的东京街头</div>
+                        <div class="card-meta">
+                            <div class="card-user">
+                                <img src="https://picsum.photos/seed/u3/20/20" class="avatar" alt="">
+                                <span>UrbanWalker</span>
+                            </div>
+                            <span>5.6k</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/art4/300/200" alt="静物摄影">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">复古胶片的质感</div>
+                        <div class="card-meta">
+                            <div class="card-user">
+                                <img src="https://picsum.photos/seed/u4/20/20" class="avatar" alt="">
+                                <span>RetroFan</span>
+                            </div>
+                            <span>4.2k</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ 常见问题 -->
+        <div class="faq-section">
+            <div class="section-header">
+                <h2 class="section-title">常见问题解答</h2>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">如何上传我的摄影作品？ <span>+</span></div>
+                <div class="faq-answer">点击页面右上角的“上传作品”按钮，选择图片文件，填写标题和标签，即可发布到社区。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">作品可以商用吗？ <span>+</span></div>
+                <div class="faq-answer">所有上传作品均默认采用知识共享协议。请查看具体图片的授权信息，确保符合您的使用需求。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">如何成为认证摄影师？ <span>+</span></div>
+                <div class="faq-answer">当您的作品累计获得一定数量的收藏和浏览量，且账号活跃度达标时，系统将自动评估并授予认证徽章。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 右侧侧边栏 -->
+    <aside class="sidebar-right">
+        <div class="widget">
+            <h4>社区排行榜</h4>
+            <ul class="ranking-list">
+                <li>
+                    <span class="ranking-num">1</span>
+                    <div class="ranking-info">
+                        <h5>雪山之巅</h5>
+                        <span>12.5k 浏览</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="ranking-num">2</span>
+                    <div class="ranking-info">
+                        <h5>赛博朋克 2077</h5>
+                        <span>10.2k 浏览</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="ranking-num">3</span>
+                    <div class="ranking-info">
+                        <h5>街头抓拍技巧</h5>
+                        <span>8.9k 浏览</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="ranking-num">4</span>
+                    <div class="ranking-info">
+                        <h5>极简主义家居</h5>
+                        <span>7.4k 浏览</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="widget">
+            <h4>热门标签</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <a href="#" class="tag">#摄影</a>
+                <a href="#" class="tag">#风景</a>
+                <a href="#" class="tag">#人像</a>
+                <a href="#" class="tag">#黑白</a>
+                <a href="#" class="tag">#HDR</a>
+                <a href="#" class="tag">#街头</a>
+                <a href="#" class="tag">#风景</a>
+                <a href="#" class="tag">#胶片</a>
+            </div>
+        </div>
+
+        <div class="widget">
+            <h4>关注我们</h4>
+            <p style="font-size: 13px; color: #666; margin-bottom: 12px;">获取每日精选摄影壁纸和拍摄技巧。</p>
+            <button class="btn btn-primary" style="width: 100%;">订阅周刊</button>
+        </div>
+    </aside>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h4>关于社区</h4>
+            <ul>
+                <li><a href="#">平台介绍</a></li>
+                <li><a href="#">加入我们</a></li>
+                <li><a href="#">联系方式</a></li>
+                <li><a href="#">帮助中心</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>创作者服务</h4>
+            <ul>
+                <li><a href="#">版权保护</a></li>
+                <li><a href="#">变现计划</a></li>
+                <li><a href="#">API 接口</a></li>
+                <li><a href="#">摄影比赛</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>法律条款</h4>
+            <ul>
+                <li><a href="#">服务协议</a></li>
+                <li><a href="#">隐私政策</a></li>
+                <li><a href="#">社区规范</a></li>
+                <li><a href="#">Cookie 设置</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>联系方式</h4>
+            <p style="font-size: 14px; line-height: 1.8;">support@visualcommunity.com<br>+86 123-4567-8900<br>上海市徐汇区科技园</p>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2023 视觉社区 版权所有. 本站仅作为示例展示，非官方P站镜像。
+    </div>
+</footer>
+
+</body>
+  </html>
