@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="英雄联盟配置指南 - 提供最新英雄联盟硬件配置要求、FPS优化设置、画质调节及显卡驱动推荐，助你获得流畅游戏体验。">
+    <meta name="keywords" content="英雄联盟配置,LOL配置要求,LOL显卡设置,LOL优化">
+    <title>英雄联盟配置-流畅运行与画质设置全攻略</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #a02c2c;
+            --secondary-color: #c8aa6e;
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #eeeeee;
+            --text-sub: #aaaaaa;
+            --accent-green: #4caf50;
+            --accent-blue: #2196f3;
+            --border-radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .cta-btn:hover {
+            background-color: #8a2323;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c0e0e 100%);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-sub);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(200, 170, 110, 0.1);
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        /* Specs Grid */
+        .specs-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 15px auto 0;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .spec-card {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border: 1px solid #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-color: var(--secondary-color);
+        }
+
+        .spec-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spec-title i {
+            color: var(--secondary-color);
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-val {
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .spec-val.min {
+            color: var(--accent-green);
+        }
+
+        .spec-val.rec {
+            color: var(--accent-blue);
+        }
+
+        /* Optimization Guide */
+        .guide-section {
+            background-color: #181818;
+            padding: 60px 0;
+        }
+
+        .guide-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+
+        .guide-sidebar {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            height: fit-content;
+        }
+
+        .guide-sidebar h3 {
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .guide-menu li {
+            margin-bottom: 10px;
+        }
+
+        .guide-menu a {
+            display: block;
+            padding: 10px;
+            border-radius: 4px;
+            color: var(--text-sub);
+        }
+
+        .guide-menu a:hover, .guide-menu a.active {
+            background-color: #2a2a2a;
+            color: var(--text-main);
+        }
+
+        .guide-content article {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+
+        .guide-content h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .guide-content p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .guide-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .guide-content li {
+            margin-bottom: 8px;
+        }
+
+        .tip-box {
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 4px solid var(--accent-green);
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #81c784;
+        }
+
+        /* Game Settings */
+        .settings-section {
+            padding: 60px 0;
+        }
+
+        .settings-container {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .setting-col {
+            padding: 30px;
+        }
+
+        .setting-col h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .setting-group {
+            margin-bottom: 20px;
+        }
+
+        .setting-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .setting-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .option-btn {
+            background: #333;
+            border: 1px solid #444;
+            color: var(--text-sub);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            border-color: var(--secondary-color);
+        }
+
+        .option-btn.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .performance-metric {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 60px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .faq-question:hover {
+            background-color: #252525;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+            color: var(--text-sub);
+            font-size: 14px;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 40px 0;
+            border-top: 1px solid #333;
+            margin-top: 60px;
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 14px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .guide-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .settings-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container nav-wrapper">
+        <a href="#" class="logo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#c8aa6e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 17L12 22L22 17" stroke="#c8aa6e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="#c8aa6e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>LOL配置大师</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#specs">配置要求</a></li>
+                <li><a href="#guide">优化指南</a></li>
+                <li><a href="#settings">游戏设置</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="cta-btn">下载驱动</a>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1>英雄联盟配置优化全攻略</h1>
+            <p>无论你是千元机还是高端电竞配置，都能通过科学的设置获得最佳帧率体验。从硬件要求到显卡设置，一站式解决卡顿与掉帧问题。</p>
+            <div class="hero-tags">
+                <span class="tag">1080P 流畅</span>
+                <span class="tag">2K 高画质</span>
+                <span class="tag">帧率稳定</span>
+                <span class="tag">内存优化</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="specs" class="specs-section container">
+        <h2 class="section-title">硬件配置参考</h2>
+        <div class="specs-grid">
+            <!-- Low End -->
+            <article class="spec-card">
+                <h3 class="spec-title">低端/核显流畅 (60FPS)</h3>
+                <div class="spec-row">
+                    <span>CPU</span>
+                    <span class="spec-val min">Intel i3 / AMD R3</span>
+                </div>
+                <div class="spec-row">
+                    <span>显卡</span>
+                    <span class="spec-val min">Intel HD 630 / 集成显卡</span>
+                </div>
+                <div class="spec-row">
+                    <span>内存</span>
+                    <span class="spec-val min">8GB DDR4</span>
+                </div>
+                <div class="spec-row">
+                    <span>硬盘</span>
+                    <span class="spec-val min">SATA SSD</span>
+                </div>
+            </article>
+
+            <!-- Mid End -->
+            <article class="spec-card" style="border-color: var(--secondary-color);">
+                <h3 class="spec-title" style="color: var(--secondary-color);">主流中端 (120FPS)</h3>
+                <div class="spec-row">
+                    <span>CPU</span>
+                    <span class="spec-val rec">Intel i5 / AMD R5</span>
+                </div>
+                <div class="spec-row">
+                    <span>显卡</span>
+                    <span class="spec-val rec">GTX 1050Ti / RX 560</span>
+                </div>
+                <div class="spec-row">
+                    <span>内存</span>
+                    <span class="spec-val rec">16GB DDR4</span>
+                </div>
+                <div class="spec-row">
+                    <span>硬盘</span>
+                    <span class="spec-val rec">NVMe M.2 SSD</span>
+                </div>
+            </article>
+
+            <!-- High End -->
+            <article class="spec-card">
+                <h3 class="spec-title">高端电竞 (144FPS+)</h3>
+                <div class="spec-row">
+                    <span>CPU</span>
+                    <span class="spec-val">Intel i7 / AMD R7</span>
+                </div>
+                <div class="spec-row">
+                    <span>显卡</span>
+                    <span class="spec-val">RTX 2060 / RX 5600XT</span>
+                </div>
+                <div class="spec-row">
+                    <span>内存</span>
+                    <span class="spec-val">32GB DDR4 3200+</span>
+                </div>
+                <div class="spec-row">
+                    <span>硬盘</span>
+                    <span class="spec-val">NVMe Gen4 SSD</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="guide" class="guide-section">
+        <div class="container guide-layout">
+            <aside class="guide-sidebar">
+                <h3>优化目录</h3>
+                <ul class="guide-menu">
+                    <li><a href="#guide-1" class="active">1. 显卡驱动更新</a></li>
+                    <li><a href="#guide-2">2. 游戏内画质设置</a></li>
+                    <li><a href="#guide-3">3. 系统性能优化</a></li>
+                    <li><a href="#guide-4">4. 网络延迟排查</a></li>
+                </ul>
+            </aside>
+            <div class="guide-content">
+                <article id="guide-1">
+                    <h2>显卡驱动更新与选择</h2>
+                    <p>显卡驱动是影响英雄联盟配置性能的关键因素。NVIDIA 和 AMD 官方均提供针对游戏的优化驱动。</p>
+                    <ul>
+                        <li><strong>NVIDIA 用户：</strong> 建议使用 Game Ready Driver。在 NVIDIA 控制面板中，将“英雄联盟”设置为“高性能 NVIDIA 处理器”。</li>
+                        <li><strong>AMD 用户：</strong> 确保使用 Adrenalin 软件中的“游戏优化”功能，并开启“Radeon Anti-Lag”以减少输入延迟。</li>
+                    </ul>
+                    <div class="tip-box">
+                        <strong>提示：</strong> 定期更新驱动可以修复旧版本中存在的内存泄漏和渲染错误，解决莫名其妙的卡顿。
+                    </div>
+                </article>
+
+                <article id="guide-2">
+                    <h2>游戏内画质设置详解</h2>
+                    <p>在游戏设置中，并非所有选项都同等重要。以下是根据性能优先级排序的关键设置：</p>
+                    <ul>
+                        <li><strong>帧率限制：</strong> 建议在游戏内开启“帧率限制”设置为显示器刷新率（如 144Hz 限制为 143），防止帧数波动过大。</li>
+                        <li><strong>特效质量：</strong> 建议设置为“中”或“高”。开启“高动态范围”会增加 GPU 负载，但对画面提升有限。</li>
+                        <li><strong>角色阴影：</strong> 关闭“角色阴影”和“动态阴影”可显著降低 CPU 负载。</li>
+                        <li><strong>垂直同步：</strong> 除非显卡发热严重，否则不建议开启。它会引入额外延迟。</li>
+                    </ul>
+                </article>
+
+                <article id="guide-3">
+                    <h2>系统后台优化</h2>
+                    <p>英雄联盟虽然对硬件要求不高，但非常依赖后台资源的纯净度。</p>
+                    <ul>
+                        <li>关闭不必要的启动项（如杀毒软件、网盘同步软件）。</li>
+                        <li>使用 Windows 自带的“游戏模式”。</li>
+                        <li>确保散热良好，过热降频是导致 FPS 突然下降的主要原因。</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="settings" class="settings-section container">
+        <h2 class="section-title">推荐配置方案</h2>
+        <div class="settings-container">
+            <div class="setting-col">
+                <h3>画质设置</h3>
+                <div class="setting-group">
+                    <label class="setting-label">特效质量</label>
+                    <div class="setting-options">
+                        <button class="option-btn selected" onclick="selectOption(this)">中</button>
+                        <button class="option-btn" onclick="selectOption(this)">高</button>
+                        <button class="option-btn" onclick="selectOption(this)">极高</button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">阴影质量</label>
+                    <div class="setting-options">
+                        <button class="option-btn selected" onclick="selectOption(this)">关闭</button>
+                        <button class="option-btn" onclick="selectOption(this)">低</button>
+                        <button class="option-btn" onclick="selectOption(this)">中</button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">垂直同步</label>
+                    <div class="setting-options">
+                        <button class="option-btn" onclick="selectOption(this)">关</button>
+                        <button class="option-btn selected" onclick="selectOption(this)">自动</button>
+                    </div>
+                </div>
+            </div>
+            <div class="setting-col" style="background-color: #252525;">
+                <h3>性能预估</h3>
+                <div class="performance-metric">
+                    <p>当前配置：中画质 + 关阴影</p>
+                    <p style="margin-top: 10px; font-size: 18px; color: var(--accent-green);">
+                        预计 FPS：<span id="fps-display">120</span>+
+                    </p>
+                    <p style="margin-top: 10px; font-size: 12px; color: #888;">
+                        * 数据基于主流 i5/R5 + GTX 1660 硬件环境估算。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="container faq-section">
+        <h2 class="section-title">常见问题解答</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">为什么我电脑配置很高，玩英雄联盟还是很卡？</div>
+            <div class="faq-answer">
+                请检查是否开启了垂直同步，或者后台运行了占用大量内存的程序。此外，确保游戏安装在非系统盘的 SSD 中，并检查散热情况。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">如何提升团战时的帧数稳定性？</div>
+            <div class="faq-answer">
+                将“帧率限制”设置为显示器刷新率，并适当降低“特效质量”或关闭“高动态范围”。确保网络延迟稳定，避免因网络波动导致的卡顿。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">32GB 内存有必要吗？</div>
+            <div class="faq-answer">
+                对于 16GB 内存的用户，开启 4K 分辨率录制或直播时可能会出现内存不足的情况。32GB 可以提供更充裕的余量，防止游戏崩溃。
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2023 英雄联盟配置大师 - 专注于游戏硬件优化与设置指导。</p>
+        <p>本站内容仅供参考，不涉及任何商业推广。</p>
+    </div>
+</footer>
+
+<script>
+    // 交互逻辑：设置按钮选择
+    function selectOption(btn) {
+        const parent = btn.parentElement;
+        const buttons = parent.querySelectorAll('.option-btn');
+        buttons.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        
+        // 模拟 FPS 变化反馈
+        const fpsDisplay = document.getElementById('fps-display');
+        let currentFps = parseInt(fpsDisplay.innerText);
+        if (btn.innerText === '极高' || btn.innerText === '中') {
+            fpsDisplay.innerText = currentFps + 10;
+        } else if (btn.innerText === '低' || btn.innerText === '关闭') {
+            fpsDisplay.innerText = currentFps - 5;
+        }
+    }
+
+    // 交互逻辑：FAQ 折叠
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // 关闭所有
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            
+            // 如果之前没打开，则打开
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // 导航平滑滚动
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+</body>
+  </html>
