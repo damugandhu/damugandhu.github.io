@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="奔驰E级轿跑车官网首页，提供2024款奔驰E Coupe车型详解、参数配置、价格信息、购车指南及试驾预约服务。探索优雅设计与豪华科技融合的轿跑魅力。">
+    <meta name="keywords" content="奔驰e轿跑,奔驰E Coupe,奔驰轿跑车,梅赛德斯-奔驰E级,豪华轿跑,购车指南">
+    <title>奔驰e轿跑-2024款梅赛德斯-奔驰E级轿跑车车型详解与购车指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --mb-black: #000000;
+            --mb-white: #ffffff;
+            --mb-gray-light: #f5f5f5;
+            --mb-gray-medium: #e0e0e0;
+            --mb-text-main: #333333;
+            --mb-text-sub: #666666;
+            --mb-accent: #c10000;
+            --mb-blue: #007aff;
+            --mb-font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", sans-serif;
+            --container-width: 1200px;
+            --header-height: 80px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--mb-font-family);
+            color: var(--mb-text-main);
+            background-color: var(--mb-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--mb-black);
+            color: var(--mb-white);
+            border: 1px solid var(--mb-black);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--mb-accent);
+            border-color: var(--mb-accent);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--mb-black);
+            border: 1px solid var(--mb-black);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--mb-black);
+            color: var(--mb-white);
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--mb-text-main);
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--mb-text-sub);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* Header */
+        header {
+            height: var(--header-height);
+            background-color: var(--mb-white);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--mb-accent);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--mb-text-main);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--mb-accent);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/seed/mercedes_e_coupe_hero/1920/1080.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--mb-white);
+            margin-top: var(--header-height);
+        }
+
+        .hero-content h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* Model Showcase */
+        .showcase {
+            padding: 80px 0;
+        }
+
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .model-card {
+            background: var(--mb-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .model-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .model-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .model-card:hover .model-image img {
+            transform: scale(1.05);
+        }
+
+        .model-info {
+            padding: 30px;
+        }
+
+        .model-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .model-tag {
+            display: inline-block;
+            background-color: var(--mb-gray-light);
+            color: var(--mb-text-sub);
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
+        .model-specs {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            border-top: 1px solid var(--mb-gray-medium);
+            border-bottom: 1px solid var(--mb-gray-medium);
+            padding: 15px 0;
+        }
+
+        .spec-item {
+            text-align: center;
+        }
+
+        .spec-label {
+            font-size: 12px;
+            color: var(--mb-text-sub);
+            display: block;
+        }
+
+        .spec-value {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .model-desc {
+            font-size: 14px;
+            color: var(--mb-text-sub);
+            margin-bottom: 25px;
+        }
+
+        .model-btn {
+            width: 100%;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--mb-gray-light);
+            padding: 80px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-item {
+            background: var(--mb-white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--mb-black);
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .feature-text {
+            font-size: 14px;
+            color: var(--mb-text-sub);
+        }
+
+        /* Configurator Teaser */
+        .configurator-teaser {
+            padding: 80px 0;
+            background: var(--mb-black);
+            color: var(--mb-white);
+            text-align: center;
+        }
+
+        .configurator-teaser h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .configurator-teaser p {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--mb-gray-medium);
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 20px 0;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--mb-text-main);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            color: var(--mb-text-sub);
+        }
+
+        .faq-question.active::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--mb-text-sub);
+            font-size: 15px;
+        }
+
+        .faq-answer p {
+            padding-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #888;
+            padding: 60px 0 20px;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: var(--mb-white);
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col h4 {
+            color: var(--mb-white);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--mb-white);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 48px; }
+            .feature-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background: var(--mb-white);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            nav.active { display: block; }
+            
+            nav ul { flex-direction: column; gap: 15px; }
+            
+            .mobile-menu-btn { display: block; }
+            
+            .hero-content h1 { font-size: 36px; }
+            
+            .model-grid { grid-template-columns: 1fr; }
+            
+            .feature-grid { grid-template-columns: 1fr; }
+            
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">奔驰<span>E级</span></a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#" class="active">车型概览</a></li>
+                    <li><a href="#">E 300 轿跑</a></li>
+                    <li><a href="#">E 450 4MATIC</a></li>
+                    <li><a href="#">设计定制</a></li>
+                    <li><a href="#">购车服务</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 14px;">预约试驾</a>
+                <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>优雅与动力的完美融合</h1>
+                <p>2024款 奔驰E级轿跑车 | 豪华轿跑新标杆</p>
+                <div style="margin-top: 30px;">
+                    <a href="#models" class="btn btn-primary">探索车型</a>
+                    <a href="#config" class="btn btn-secondary" style="color: white; border-color: white; margin-left: 10px;">在线定制</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Models Section -->
+        <section id="models" class="showcase container">
+            <h2 class="section-title">主力车型</h2>
+            <p class="section-subtitle">三大动力版本，满足不同驾驶需求</p>
+            
+            <div class="model-grid">
+                <!-- Model 1 -->
+                <article class="model-card">
+                    <div class="model-image">
+                        <img src="https://picsum.photos/seed/mercedes_e300_coupe/600/400" alt="2024款奔驰E300 Coupe">
+                    </div>
+                    <div class="model-info">
+                        <span class="model-tag">主推车型</span>
+                        <h3 class="model-name">E 300 轿跑车</h3>
+                        <div class="model-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">发动机</span>
+                                <span class="spec-value">2.0T 直列四缸</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">最大功率</span>
+                                <span class="spec-value">190 kW</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">0-100km/h</span>
+                                <span class="spec-value">6.7秒</span>
+                            </div>
+                        </div>
+                        <p class="model-desc">搭载2.0T涡轮增压发动机，提供灵敏的油门响应与平顺的换挡体验，是日常驾驶的完美选择。</p>
+                        <a href="#" class="btn btn-primary model-btn">查看详情</a>
+                    </div>
+                </article>
+
+                <!-- Model 2 -->
+                <article class="model-card">
+                    <div class="model-image">
+                        <img src="https://picsum.photos/seed/mercedes_e450_coupe/600/400" alt="2024款奔驰E450 4MATIC Coupe">
+                    </div>
+                    <div class="model-info">
+                        <span class="model-tag">性能旗舰</span>
+                        <h3 class="model-name">E 450 4MATIC 轿跑车</h3>
+                        <div class="model-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">发动机</span>
+                                <span class="spec-value">3.0T 直列六缸</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">最大功率</span>
+                                <span class="spec-value">320 kW</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">0-100km/h</span>
+                                <span class="spec-value">4.9秒</span>
+                            </div>
+                        </div>
+                        <p class="model-desc">引入3.0T V6发动机与4MATIC四驱系统，带来强劲动力与卓越操控稳定性，彰显豪华风范。</p>
+                        <a href="#" class="btn btn-primary model-btn">查看详情</a>
+                    </div>
+                </article>
+
+                <!-- Model 3 -->
+                <article class="model-card">
+                    <div class="model-image">
+                        <img src="https://picsum.photos/seed/mercedes_e_63_coupe/600/400" alt="AMG E 63 S 轿跑车">
+                    </div>
+                    <div class="model-info">
+                        <span class="model-tag">高性能</span>
+                        <h3 class="model-name">AMG E 63 S 轿跑车</h3>
+                        <div class="model-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">发动机</span>
+                                <span class="spec-value">4.0T V8 双涡轮增压</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">最大功率</span>
+                                <span class="spec-value">450 kW</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">0-100km/h</span>
+                                <span class="spec-value">3.4秒</span>
+                            </div>
+                        </div>
+                        <p class="model-desc">纯粹的AMG高性能基因，V8引擎轰鸣，专属AMG空气动力学套件，赛道与公路的终极伴侣。</p>
+                        <a href="#" class="btn btn-primary model-btn">查看详情</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">豪华科技体验</h2>
+                <p class="section-subtitle">不仅是驾驶，更是智能生活方式的延伸</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">✦</div>
+                        <h3 class="feature-title">MBUX 智能人机交互</h3>
+                        <p class="feature-text">全新一代人机交互系统，支持手势控制与自然语音识别，让操作更直觉、更高效。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">❖</div>
+                        <h3 class="feature-title">64色环境氛围照明</h3>
+                        <p class="feature-text">根据驾驶模式自动调节车内氛围，配合柏林之声环绕立体声音响，打造沉浸式听觉盛宴。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">∞</div>
+                        <h3 class="feature-title">增强现实导航</h3>
+                        <p class="feature-text">将导航信息实时叠加在车辆前挡风玻璃上，精准指引目的地，行车更安全。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configurator Teaser -->
+        <section id="config" class="configurator-teaser">
+            <div class="container">
+                <h2>打造您的专属座驾</h2>
+                <p>通过在线配置器，自定义外观套件、内饰风格及专属徽标，让您的奔驰E级轿跑独一无二。</p>
+                <a href="#" class="btn btn-primary">开始配置</a>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq container">
+            <h2 class="section-title">常见问题</h2>
+            <div class="faq-item">
+                <button class="faq-question">奔驰E级轿跑的轴距是多少？</button>
+                <div class="faq-answer">
+                    <p>奔驰E级轿跑的轴距为2939mm，相比三厢版E级有所缩短，以换取更低的车身姿态和更优雅的车顶线条。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">E 300 Coupe 支持L3级自动驾驶吗？</button>
+                <div class="faq-answer">
+                    <p>部分配置的E级车型支持Drive Pilot L3级自动驾驶辅助系统，在特定高速路况下可实现有条件的自动驾驶。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">轿跑版与三厢版的主要区别是什么？</button>
+                <div class="faq-answer">
+                    <p>主要区别在于车身设计，轿跑版拥有溜背式车顶、短前悬长后悬的动感比例以及更宽的车身，外观更具运动感。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>奔驰E级</h3>
+                    <p>致力于为全球用户提供安全、高效、舒适的出行解决方案。体验德国制造的精湛工艺与前沿科技。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>车型系列</h4>
+                    <ul>
+                        <li><a href="#">E 300 轿跑</a></li>
+                        <li><a href="#">E 450 4MATIC</a></li>
+                        <li><a href="#">AMG E 63 S</a></li>
+                        <li><a href="#">改装套件</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>客户服务</h4>
+                    <ul>
+                        <li><a href="#">预约试驾</a></li>
+                        <li><a href="#">金融方案</a></li>
+                        <li><a href="#">售后服务</a></li>
+                        <li><a href="#">查找经销商</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">品牌故事</a></li>
+                        <li><a href="#">可持续发展</a></li>
+                        <li><a href="#">新闻中心</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 奔驰E级轿跑车展示页. 本页面仅为展示设计，非官方网站。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('active');
+        }
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+                
+                // Close all other answers
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                    q.nextElementSibling.style.maxHeight = null;
+                });
+
+                // Toggle current
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
+        });
+    </script>
+</body>
+  </html>
